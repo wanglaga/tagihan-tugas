@@ -6,8 +6,8 @@ const http = require('http').createServer(app);
 const io = require('socket.io')(http);
 
 app.set('view engine', 'ejs');
-app.set('views', path.join(__dirname, 'views'));
-app.use(express.static('public'));
+app.set('views', path.join(__dirname, '..', 'views'));
+app.use(express.static(path.join(__dirname, '..', 'public')));
 
 const API_URL = 'https://script.google.com/macros/s/AKfycbyBIkpmX2fcMw-Cfgl-D7tjsD6yyFn4wTgNTaX1uf1guejPL9rG27D8r-QXke6tmLtG/exec?data=ketuntasan';
 
