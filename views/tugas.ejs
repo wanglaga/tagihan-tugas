@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="/logo_smpdw.png">
+  <title>Pilih Kelas</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      background: #f0f0f0;
+      padding: 20px;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 5px;
+      color: #0d0d0d;
+    }
+
+    .kelas-container {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      max-width: 400px;
+      gap: 15px;
+    }
+
+    .kelas-card {
+      background: #007BFF;
+      border-radius: 8px;
+      padding: 20px;
+      text-align: center;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      font-size: 18px;
+      color: white;
+      text-decoration: none;
+      transition: background 0.3s;
+    }
+
+    .kelas-card:hover {
+      background: #0056b3;
+    }
+
+    @media (min-width: 600px) {
+      .kelas-container {
+        flex-direction: row;
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Kekurangan Tugas Harian <br>Semester Genap</h1><br>
+  <h3>Silahkan pilih kelas</h3>
+  <div class="kelas-container">
+    <a href="/kelas/7" class="kelas-card">Kelas 7</a>
+    <a href="/kelas/8" class="kelas-card">Kelas 8</a>
+    <a href="/kelas/9" class="kelas-card">Kelas 9</a>
+  </div>
+</body>
+
+</html>

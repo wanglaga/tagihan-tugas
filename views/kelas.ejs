@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Kelas <%= kelas %> - Ketuntasan Tugas</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/x-icon" href="/logo_smpdw.png">
+    <style>
+        body {
+            font-family: sans-serif;
+            background: #f5f5f5;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        .alert {
+            background-color: #ecfdf5;
+            border-left: 5px solid #10b981;
+            padding: 16px;
+            border-radius: 8px;
+            margin: 10px auto;
+            color: #065f46;
+            text-align: justify;
+        }
+
+        .card {
+            background: #fff;
+            margin: 10px auto;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            max-width: 500px;
+            border: 1px solid #ddd;
+        }
+
+        .card-header {
+            background: #eee;
+            padding: 10px 15px;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        .card-body {
+            padding: 15px;
+            font-size: 14px;
+        }
+
+        ul {
+            margin: 0 0 10px 0;
+            padding-left: 20px;
+        }
+
+        li {
+            line-height: 1.5em;
+        }
+
+        .no-task {
+            font-style: italic;
+            color: #777;
+        }
+
+        .back-button {
+            display: inline-block;
+            margin-bottom: 20px;
+            padding: 8px 16px;
+            background-color: #007BFF;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-size: 14px;
+        }
+
+        .back-button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+
+<body>`
+
+    <a href="/tugas" class="back-button">← Kembali ke Pilihan Kelas</a>
+    <h2>Kekurangan Tugas Kelas <%= kelas %>
+    </h2>
+    <div class="alert">
+        <strong>Informasi!</strong> Bagi yang masih memiliki tanggungan tugas, silahkan segera dikerjakan dan
+        dikumpulkan dalam bentuk foto ke guru mapel
+    </div>
+    <% if (error) { %>
+        <p style="color: red; text-align: center;">
+            <%= error %>
+        </p>
+        <% } %>
+            <div id="card-container">
+                <% siswa.forEach(s=> { %>
+                    <div class="card">
+                        <div class="card-header">
+                            <%= s.nama %> | Kelas <%= s.kelas %>
+                        </div>
+                        <div class="card-body">
+                            <% const mp=s.mata_pelajaran || {}; const entries=Object.entries(mp).filter(([_, val])=> val
+                                && val !== "TIDAK ADA TUGAS");
+                                %>
+                                <% if (entries.length> 0) { %>
+                                    <% entries.forEach(([mapel, tugas])=> { %>
+                                        <p><strong>
+                                                <%= mapel %>:
+                                            </strong></p>
+                                        <ul>
+                                            <% tugas.split('\n').forEach(item=> { %>
+                                                <li>
+                                                    <%= item.trim() %>
+                                                </li>
+                                                <% }) %>
+                                        </ul>
+                                        <% }) %>
+                                            <% } else { %>
+                                                <p class="no-task">Tidak ada tugas</p>
+                                                <% } %>
+                        </div>
+                    </div>
+                    <% }) %>
+            </div>
+
+            <script src="/socket.io/socket.io.js"></script>
+            <script src="/client.js"></script>
+</body>
+
+</html>
