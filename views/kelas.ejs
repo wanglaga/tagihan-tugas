@@ -78,6 +78,10 @@
         .back-button:hover {
             background-color: #0056b3;
         }
+
+        ul.square {
+            list-style-type: square;
+        }
     </style>
 </head>
 
@@ -87,8 +91,12 @@
     <h2>Kekurangan Tugas Kelas <%= kelas %>
     </h2>
     <div class="alert">
-        <strong>Informasi!</strong> Bagi yang masih memiliki tanggungan tugas, silahkan segera dikerjakan dan
-        dikumpulkan dalam bentuk foto ke guru mapel
+        <strong>Informasi!</strong>
+        <ul class="square">
+            <li>Bagi yang masih memiliki tanggungan tugas, silahkan segera dikerjakan dan dikumpulkan dalam bentuk foto
+                ke guru mapel</li>
+            <li>Jika tugas sudah selesai tapi masih tercantum di tagihan, silahkan segera konfirmasi ke guru mapel</li>
+        </ul>
     </div>
     <% if (error) { %>
         <p style="color: red; text-align: center;">
